@@ -5,8 +5,8 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=django_db
-      - POSTGRES_USER=django_user
-      - POSTGRES_PASSWORD=django_password
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=spider
     ports:
       - "5432:5432"
 
@@ -26,8 +26,8 @@ services:
       - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend
       - REDIS_URL=redis://redis:6379/1
       - DB_NAME=django_db
-      - DB_USER=django_user
-      - DB_PASSWORD=django_password
+      - DB_USER=postgres
+      - DB_PASSWORD=spider
       - DB_HOST=db
       - DB_PORT=5432
 
@@ -46,8 +46,8 @@ services:
       - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend
       - REDIS_URL=redis://redis:6379/1
       - DB_NAME=django_db
-      - DB_USER=django_user
-      - DB_PASSWORD=django_password
+      - DB_USER=postgres
+      - DB_PASSWORD=spider
       - DB_HOST=db
       - DB_PORT=5432
 
@@ -66,8 +66,8 @@ services:
       - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend
       - REDIS_URL=redis://redis:6379/1
       - DB_NAME=django_db
-      - DB_USER=django_user
-      - DB_PASSWORD=django_password
+      - DB_USER=postgres
+      - DB_PASSWORD=spider
       - DB_HOST=db
       - DB_PORT=5432
 
