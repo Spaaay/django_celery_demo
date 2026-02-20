@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celery Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span>TaskMaster</span>
+            </div>
+            <div class="status-indicator">
+                <span class="dot"></span>
+                <span id="connection-status">Connecting...</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Async Task Dashboard</h1>
+                <p>Monitor and trigger background tasks with real-time updates.</p>
+            </section>
+
+            <div class="dashboard-grid">
+                <!-- Heavy Task Card -->
+                <div class="card">
+                    <div class="card-icon heavy-task">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Heavy Computation</h3>
+                    <p>Simulates a CPU-intensive task running in the background.</p>
+                    <button id="btn-heavy-task" class="btn primary">
+                        <span>Start Task</span>
+                    </button>
+                    <div id="status-heavy-task" class="status-message"></div>
+                </div>
+
+                <!-- Workflow Card -->
+                <div class="card">
+                    <div class="card-icon workflow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Order Workflow</h3>
+                    <p>Chained tasks: Validate &rarr; Payment &rarr; Shipping.</p>
+                    <button id="btn-workflow" class="btn secondary">
+                        <span>Trigger Chain</span>
+                    </button>
+                    <div id="status-workflow" class="status-message"></div>
+                </div>
+
+                <!-- Retry Card -->
+                <div class="card">
+                    <div class="card-icon retry">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M23 4v6h-6"></path>
+                            <path d="M1 20v-6h6"></path>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                    </div>
+                    <h3>Unstable Task</h3>
+                    <p>Randomly fails and automatically retries.</p>
+                    <button id="btn-retry" class="btn accent">
+                        <span>Test Retry</span>
+                    </button>
+                    <div id="status-retry" class="status-message"></div>
+                </div>
+            </div>
+
+            <section class="logs-section">
+                <div class="logs-header">
+                    <h2>Activity Log</h2>
+                    <button id="clear-logs" class="btn-text">Clear</button>
+                </div>
+                <div id="activity-log" class="logs-container">
+                    <div class="log-entry system">
+                        <span class="timestamp">Just now</span>
+                        <span class="message">Dashboard initialized. Waiting for actions...</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{% static 'app.js' %}"></script>
+</body>
+
+</html>
